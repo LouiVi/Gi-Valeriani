@@ -1,0 +1,25 @@
+Alert,CelsiusToFahrenheit,CelsiusToKelvin,Clone,Confirm,CountMethods,CreateCanvas,CreatePlugin,Document,Extend,FahrenheitToCelsius,FahrenheitToKelvin,GetDecFromHex,GetFileTitle,GetGradientColors,GetMethods,GetSource,GetObjectFunctions,GetObjectFunctionsParameterNames,GetType,GetVersion,Guid,GuidAlternate,HSVToRGB,Hex,HexToDarkerHex,HexToLighterHex,HexToRgb,HexToRgba,ImageToCanvas,KelvinToCelsius,KelvinToFahrenheit,KilometersToMiles,MilesToKilometers,Parse,Prompt,RGBToHSV,RandomFloatRange,RandomHexColor,RandomIntegerRange,Remove,RemoveAll,RgbToHex,RgbaToHex,SetInterval,SetTimeout,Shuffle,Stringify,ToUnicode,Window,ZipFolder
+
+app.LoadPlugin( "Support" );
+
+function OnStart()
+{
+  lay = app.CreateLayout( "Linear", "VCenter,FillXY" );
+
+  sup = app.CreateSupport();
+  anim = sup.AnimationManager();
+
+  btn = app.CreateButton( "I am test button!" );
+  lay.AddChild( btn );
+
+  lst = app.CreateList( anim.keys, 1, 0.7 );
+  lst.SetOnTouch( lst_OnTouch );
+  lay.AddChild( lst );
+
+  app.AddLayout( lay );
+}
+
+function lst_OnTouch( name )
+{
+  sup.PlayAnim( btn, name );
+}
